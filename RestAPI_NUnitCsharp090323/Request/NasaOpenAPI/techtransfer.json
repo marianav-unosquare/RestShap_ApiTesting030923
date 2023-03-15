@@ -1,0 +1,4 @@
+{
+  "method": "Get",
+  "url": "https://api.nasa.gov/techtransfer/patent/?engine&api_key="
+}
