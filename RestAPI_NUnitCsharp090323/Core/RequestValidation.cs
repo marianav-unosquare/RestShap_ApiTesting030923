@@ -102,7 +102,7 @@ namespace RestAPI_NUnitCsharp090323.Core
             createUserRes = JsonConvert.DeserializeObject<CreateUserRes>(response.Content);
             Assert.AreEqual(createUserRes.name, "UserName");
             Assert.AreEqual(createUserRes.job, "myJob");
-            //Assert.That(response.StatusCode, Is.EqualTo("201"));
+            Assert.That(response.IsSuccessful, Is.True);
 
         }
 
