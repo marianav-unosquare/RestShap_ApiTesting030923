@@ -13,12 +13,6 @@ namespace RestAPI_NUnitCsharp090323
     {
         private PlaceDetailsResponse placeDetailsResponse;
         private CreatePostResponse createPostResponse;
-        string nameCameras = string.Empty;
-
-        internal void ValidateStatusCode()
-        {
-           
-        }
 
 
         internal void ValidateResponseIsJson()

@@ -15,6 +15,7 @@ namespace RestAPI_NUnitCsharp090323.Core
 
         private string healthCareUrl = "https://www.healthcare.gov/";
         private string NasaUrl = "https://api.nasa.gov/";
+        private string ReqresUrl = "https://reqres.in/";
         private string APINasaToken = "5ZpzNnl9vn4lC5f5xAXmvXWE2fzXETV4SdRfrpp6";
 
         protected void ExecuteGenericRequestNasa(string url, Method method, object body = null)
@@ -39,6 +40,24 @@ namespace RestAPI_NUnitCsharp090323.Core
         {
             response = new RestResponse();
             client = new RestClient(healthCareUrl);
+            request = new RestRequest(url, method);
+
+
+            if (body == null)
+            {
+                response = client.Execute(request);
+            }
+            else
+            {
+                request = request.AddBody(body);
+                response = client.Execute(request);
+            }
+        }
+
+        protected void ExecuteGenericRequestReqres(string url, Method method, object body = null)
+        {
+            response = new RestResponse();
+            client = new RestClient(ReqresUrl);
             request = new RestRequest(url, method);
 
 

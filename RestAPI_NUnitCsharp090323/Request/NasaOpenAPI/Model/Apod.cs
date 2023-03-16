@@ -9,6 +9,8 @@ namespace RestAPI_NUnitCsharp090323.Request.NasaOpenAPI.Model
     public class Apod
     {
         public string copyright { get; set; }
+
+       
         //public string date { get; set; }
 
         //public string explanation { get; set; }
