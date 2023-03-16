@@ -21,6 +21,7 @@ namespace RestAPI_NUnitCsharp090323.Core
         private HttpStatusCode statusCode;
         private Index healthcareRes;
         private CreateUserReq createUserReq;
+        private CreateUserRes createUserRes;
         private TechTransfer techTransferResponse;
         private Apod apodResponse;
         private Asteroids asteroidResponse;
@@ -65,7 +66,7 @@ namespace RestAPI_NUnitCsharp090323.Core
                 ExecuteGenericRequestNasa("neo/rest/v1/neo/browse?api_key=", Method.Get);
                 asteroidResponse = JsonConvert.DeserializeObject<Asteroids>(response.Content);
                 Assert.AreEqual(20, asteroidResponse.page.size);
-                
+
 
             }
         }
@@ -83,19 +84,26 @@ namespace RestAPI_NUnitCsharp090323.Core
             }
         }
 
-      //POST - reqres
+        //POST - reqres
         internal void ValidatePostRequest()
         {
-            string jsonBody = @"{
-                name' = 'Name',
-                    'job' = 'QA''
-                }";
-            request.AddBody(jsonBody);
+            //string jsonBody = @"{
+            //    name' = 'Name',
+            //        'job' = 'QA''
+            //    }";
+            CreateUserReq body = new CreateUserReq()
+            {
+                name = "UserName",
+                job = "myJob"
+            }
+            var jsonBody = JsonConvert.SerializeObject(body);
+            Assert.IsNotEmpty(jsonBody);
             ExecuteGenericRequestReqres("api/users", Method.Post, jsonBody);
+            createUserRes = JsonConvert.DeserializeObject<CreateUserRes>(response.Content);
+            Assert.AreEqual(createUserRes.name, "UserName");
+            Assert.AreEqual(createUserRes.name, "myJob");
+            //Assert.That(response.StatusCode, Is.EqualTo("201"));
 
-
-            
-          
         }
 
 
