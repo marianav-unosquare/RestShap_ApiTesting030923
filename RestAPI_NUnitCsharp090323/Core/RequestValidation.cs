@@ -95,13 +95,13 @@ namespace RestAPI_NUnitCsharp090323.Core
             {
                 name = "UserName",
                 job = "myJob"
-            }
+            };
             var jsonBody = JsonConvert.SerializeObject(body);
             Assert.IsNotEmpty(jsonBody);
             ExecuteGenericRequestReqres("api/users", Method.Post, jsonBody);
             createUserRes = JsonConvert.DeserializeObject<CreateUserRes>(response.Content);
             Assert.AreEqual(createUserRes.name, "UserName");
-            Assert.AreEqual(createUserRes.name, "myJob");
+            Assert.AreEqual(createUserRes.job, "myJob");
             //Assert.That(response.StatusCode, Is.EqualTo("201"));
 
         }
